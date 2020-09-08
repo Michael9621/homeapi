@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Category;
 use App\Http\Resources\CategoryCollection;
+use App\Http\Resources\PropertyCollection;
 use App\Http\Resources\Category as CategoryResource;
 
 class CategoryController extends Controller
@@ -88,5 +89,10 @@ class CategoryController extends Controller
     {
         $category=Category::find($id);
         $category->delete();
+    }
+
+    public function categoryProperties($id){
+        $category=Category::find($id);
+        return new PropertyCollection($category->property);
     }
 }

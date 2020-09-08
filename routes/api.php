@@ -26,4 +26,6 @@ Route::apiResource('/properties', 'PropertyController');
 
 Route::get('/location/{id}/properties', 'LocationController@locationProperties');
 
+Route::get('/category/{id}/properties', 'CategoryController@categoryProperties');
+
 

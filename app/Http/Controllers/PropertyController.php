@@ -45,7 +45,7 @@ class PropertyController extends Controller
             "category_id"=>$request->category_id,
             "location_id"=>$request->location_id,
             "bedrooms"=>$request->bedrooms,
-            "statues"=>$request->status
+            "status"=>$request->status
         ]);
     }
 
@@ -80,7 +80,16 @@ class PropertyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $property=Property::find($id);
+        $property->name=$request->name;
+        $property->price=$request->price;
+        $property->description=$request->description;
+        $property->category_id=$request->category_id;
+        $property->location_id=$request->location_id;
+        $property->bedrooms=$request->bedrooms;
+        $property->status=$request->status;
+        $property->save();
+
     }
 
     /**
@@ -91,6 +100,7 @@ class PropertyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $property=Property::find($id);
+        $property->deleteI();
     }
 }
